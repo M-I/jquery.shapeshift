@@ -79,7 +79,6 @@
           $obj.css(attributes);
         }
       }
-      $obj.html($obj.index());
     }
 
     // Set the container height to match the tallest column
