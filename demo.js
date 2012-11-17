@@ -7,23 +7,28 @@ function getRandomColor() {
   return color;
 }
 
-// Lets generate some child divs
-var $container = $(".container");
-$container.each(function() {
-  for(i=0;i<10;i++) {
-    var $element = $("<div></div>"),
-        height = Math.floor(Math.random() * 200) + 100,
-        width = 200,
-        color = getRandomColor(),
-        $img = $('<img src="http://placehold.it/'+width+'x'+Math.floor(height / 2)+'" />');
-    $element.css({
-      height: height,
-      background: color
-    });
-    $(this).append($element);
-    $element.append($img);
-  }
-})
+function renderChildren(placekitten) {
+  // Lets generate some child divs
+  var $containers = $(".container");
+  $containers.children().remove();
+  $containers.each(function() {
+    for(i=0;i<15;i++) {
+      var $element = $("<div></div>"),
+          height = Math.floor(Math.random() * 200) + 100,
+          width = 200;
+      if(placekitten) {
+        var background = 'http://www.placekitten.com/'+width+'/'+height
+      } else {
+        var background = getRandomColor(),
+            $img = $('<img src="http://placehold.it/'+width+'x'+Math.floor(height / 2)+'" />');
+        $element.append($img);
+      }
+      $element.css({ background: background, height: height, width: width });
+      $(this).append($element);
+    }
+  });
+}
+renderChildren(false);
 
 // And now we can shapeshift!
 $(".filter").on("click", function(e) {
@@ -51,28 +56,7 @@ $(".filter").on("click", function(e) {
     $(".container").shapeshift();
   }
   if($(this).hasClass("placekittens")) {
-    $container.each(function() {
-      var $objects = $(this).children().filter(":visible");
-      $objects.each(function(i) {
-        var width = $(this).outerWidth(),
-            height = $(this).outerHeight(),
-            $img = $('<img src="http://www.placekitten.com/'+width+"/"+height+'" width="'+width+'" height="'+height+'" />');
-
-        $img.css({
-          left: $(this).position().left,
-          top: $(this).position().top,
-          position: "absolute"
-        })
-        $container.append($img);
-        $(this).remove();
-
-        if(i === $objects.length - 1) {
-          setTimeout(function() {
-            $(".container").shapeshift();
-          }, 300);
-        }
-      })
-    })
+    renderChildren(true);
   }
 })
 $(".container").shapeshift();
