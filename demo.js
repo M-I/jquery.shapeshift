@@ -10,7 +10,7 @@ function getRandomColor() {
 // Lets generate some child divs
 var $container = $(".container");
 $container.each(function() {
-  for(i=0;i<20;i++) {
+  for(i=0;i<10;i++) {
     var $element = $("<div></div>"),
         height = Math.floor(Math.random() * 200) + 100,
         width = 200,
