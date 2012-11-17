@@ -8,7 +8,7 @@ function renderChildren(placekitten) {
       var $element = $("<div></div>"),
           height = Math.floor(Math.random() * 200) + 100,
           width = 200;
-      if(container_i === 2) { height = 200; }
+      if(container_i === 1) { height = 200; }
       if(placekitten) {
         var background = 'url("http://www.placekitten.com/'+width+'/'+height+'")';
       } else {
