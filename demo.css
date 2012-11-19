@@ -13,7 +13,7 @@ h1 { text-align: center; }
   background: #DEDEDE;
   height: 160px;
   font-size: 13px;
-  padding: 27px 0 13px 0;
+  padding: 20px 0 13px 0;
   position: absolute; top: 10px; right: 10px; border: 0;
   text-align: center;
 }
@@ -22,11 +22,15 @@ h1 { text-align: center; }
 
 #nav { text-align: center; }
 
+ul.description { list-style: none; }
+ul.description li { margin-bottom: 8px; }
+
 .container {
+  outline: 2px dashed #CCC;
   float: left;
-  margin: 50px auto 0 auto;
+  margin: 50px 0 0 1%;
   position: relative;
-  width: 50%;
+  width: 48%;
 }
 
 .container > * {
@@ -34,7 +38,7 @@ h1 { text-align: center; }
   border-radius: 3px;
   box-shadow: 0px 0px 4px 1px #ccc;
   position: absolute;
-  width: 200px;
+  width: 140px;
 }
 
 .container > *.ss-moving {
