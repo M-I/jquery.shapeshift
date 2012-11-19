@@ -7,8 +7,8 @@ function renderChildren(placekitten) {
     for(i=0;i<15;i++) {
       var $element = $("<div></div>"),
           height = Math.floor(Math.random() * 200) + 100,
-          width = 200;
-      if(container_i === 1) { height = 200; }
+          width = 140;
+      if(container_i === 1) { height = 140; }
       if(placekitten) {
         var background = 'url("http://www.placekitten.com/'+width+'/'+height+'")';
       } else {
@@ -28,32 +28,48 @@ $(".filter").on("click", function(e) {
   e.preventDefault();
 
   if($(this).hasClass("no-drag-animate")) {
-    $containers.shapeshift({animatedOnDrag: false});
+    $containers.shapeshift({
+      animatedOnDrag: false,
+      paddingY: 20
+    });
   }
   if($(this).hasClass("no-drag")) {
-    $containers.shapeshift({draggable: false});
+    $containers.shapeshift({
+      draggable: false,
+      paddingY: 20
+    });
   }
   if($(this).hasClass("drag")) {
-    $containers.shapeshift();
+    $containers.shapeshift({
+      paddingY: 20
+    });
   }
   if($(this).hasClass("hide")) {
     var $objects = $containers.children().filter(":visible"),
         random = Math.round(Math.random()*7);
     $objects.eq(random).hide();
-    $containers.shapeshift();
+    $containers.shapeshift({
+      paddingY: 20
+    });
   }
   if($(this).hasClass("show")) {
     var $objects = $containers.children().filter(":hidden"),
         random = Math.round(Math.random()*3);
     $objects.eq(random).show();
-    $containers.shapeshift();
+    $containers.shapeshift({
+      paddingY: 20
+    });
   }
   if($(this).hasClass("placekittens")) {
     renderChildren(true);
-    $containers.shapeshift();
+    $containers.shapeshift({
+      paddingY: 20
+    });
   }
 })
-$containers.shapeshift();
+$containers.shapeshift({
+  paddingY: 20
+});
 
 function getRandomColor() {
   var letters = 'ABCDEF'.split('');
