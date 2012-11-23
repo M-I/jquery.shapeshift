@@ -1,7 +1,7 @@
 var $containers = $(".container");
 
+// This just renders us some random temporary children
 function renderChildren(placekitten) {
-  // Lets generate some child divs
   $containers.children().filter(":not(.credits)").remove();
   $containers.each(function(container_i) {
     for(i=0;i<15;i++) {
@@ -23,7 +23,21 @@ function renderChildren(placekitten) {
 }
 renderChildren(false);
 
-// And now we can shapeshift!
+function getRandomColor() {
+  var letters = 'ABCDEF'.split('');
+  var color = '#';
+  for (var i=0;i<6;i++) {
+    color += letters[Math.round(Math.random() * 5)];
+  }
+  return color;
+}
+
+// Initial Shapeshift
+$containers.shapeshift({
+  paddingY: 20
+});
+
+// When our buttons are clicked.
 $(".filter").on("click", function(e) {
   e.preventDefault();
 
@@ -67,15 +81,3 @@ $(".filter").on("click", function(e) {
     });
   }
 })
-$containers.shapeshift({
-  paddingY: 20
-});
-
-function getRandomColor() {
-  var letters = 'ABCDEF'.split('');
-  var color = '#';
-  for (var i=0;i<6;i++) {
-    color += letters[Math.round(Math.random() * 5)];
-  }
-  return color;
-}
