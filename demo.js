@@ -5,18 +5,18 @@ function renderChildren(placekitten) {
   $containers.children().filter(":not(.credits)").remove();
   $containers.each(function(container_i) {
     for(i=0;i<15;i++) {
-      var $element = $("<div></div>"),
+      var $element = $("<div class='object'></div>"),
           height = Math.floor(Math.random() * 200) + 100,
-          width = 140;
+          width = $containers.children().first().width();
       if(container_i === 1) { height = 140; }
       if(placekitten) {
         var background = 'url("http://www.placekitten.com/'+width+'/'+height+'")';
       } else {
         var background = getRandomColor(),
-            $img = $('<img src="http://fpoimg.com/'+width+'x'+Math.floor(height / 2)+'" />');
+            $img = $('<img src="http://fpoimg.com/'+width+'x'+Math.floor(height / 2)+'" class="placeholder" />');
         $element.append($img);
       }
-      $element.css({ background: background, height: height, width: width });
+      $element.css({ background: background, height: height });
       $(this).append($element);
     }
   });
@@ -81,3 +81,17 @@ $(".filter").on("click", function(e) {
     });
   }
 })
+
+$containers.on("ss-event-dropped", function(e, selected) {
+  // Get the new position for the dropped item
+  var position = $(selected).index();
+  console.log("The dropped position:", position)
+
+  // Get the index position of each object
+  console.log("Child positions:")
+  $objects = $(this).children();
+  $objects.each(function(i) {
+    position[i] = $(this).index();
+    console.log($(this).index())
+  });
+});
