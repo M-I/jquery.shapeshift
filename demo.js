@@ -17,9 +17,7 @@ $(document).ready(function() {
         if(placekitten) {
           var background = 'url("http://www.placekitten.com/'+width+'/'+height+'")';
         } else {
-          var background = getRandomColor(),
-              $img = $('<img src="http://fpoimg.com/'+width+'x'+Math.floor(height / 2)+'" class="placeholder" />');
-          $element.append($img);
+          var background = 'url("http://fpoimg.com/'+width+'x'+height+'")';
         }
         $element.css({ background: background, height: height });
         $(this).append($element);
@@ -27,15 +25,6 @@ $(document).ready(function() {
     });
   }
   renderChildren(false);
-
-  function getRandomColor() {
-    var letters = 'ABCDEF'.split('');
-    var color = '#';
-    for (var i=0;i<6;i++) {
-      color += letters[Math.round(Math.random() * 5)];
-    }
-    return color;
-  }
 
   // Initial Shapeshift
   $containers.shapeshift({
@@ -69,7 +58,7 @@ $(document).ready(function() {
     $containers.shapeshift(options);
   });
 
-  $(".filters .other button").on("click", function() {
+  $(".filters .filtering button").on("click", function() {
     switch($(this).data("attr")) {
       case "hide":
         $objects = $containers.children().filter(":visible");
@@ -80,6 +69,15 @@ $(document).ready(function() {
         $objects = $containers.children().filter(":hidden");
         random = Math.round(Math.random() * $objects.size());
         $objects.eq(random).show();
+        break;
+    }
+  });
+
+  $(".filters .placeholders button").on("click", function() {
+    switch($(this).data("attr")) {
+      case "fpoimg":
+        renderChildren(false);
+        $(".filters .dnd button").first().trigger("click")
         break;
       case "placekittens":
         renderChildren(true);
