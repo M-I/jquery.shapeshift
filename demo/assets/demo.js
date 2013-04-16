@@ -15,12 +15,12 @@
           if (container_i === 0) {
             colspan = weighted_colspans[Math.floor(Math.random() * weighted_colspans.length)];
             console.log(colspan)
-            height = colspan * 80 + ((colspan - 1) * 12);
+            height = 200;
           } else {
             height = Math.random() * 100 + 100;
             colspan = 1;
           }
-          elements.push("<li data-ss-colspan=" + colspan + " style='height: " + height + "'><div class='position'>" + i + "</div></li>");
+          elements.push("<li data-ss-colspan=" + colspan + " style='height: " + height + "px'><div class='position'>" + i + "</div></li>");
         }
         return $(this).append(elements.join(""));
       });
