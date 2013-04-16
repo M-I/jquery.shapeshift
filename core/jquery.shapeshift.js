@@ -575,7 +575,7 @@
         if (offset == null) {
           offset = 0;
         }
-        console.log(offset)
+        console.log(offset, "!");
         augmented_array = array.map(function(val, index) {
           return [val, index];
         });
