@@ -55,6 +55,10 @@ header .details ul li strong {
   font-weight: bold;
 }
 
+header .version {
+  margin-bottom: 10px;
+}
+
 ul.options {
   margin-top: 15px;
   text-align: center;
