@@ -15,7 +15,7 @@
           if (container_i === 0) {
             colspan = weighted_colspans[Math.floor(Math.random() * weighted_colspans.length)];
             console.log(colspan)
-            height = 200;
+            height = colspan * 80 + ((colspan - 1) * 12);
           } else {
             height = Math.random() * 100 + 100;
             colspan = 1;
