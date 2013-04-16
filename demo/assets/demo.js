@@ -14,6 +14,7 @@
         for (i = _i = 0; 0 <= child_count ? _i < child_count : _i > child_count; i = 0 <= child_count ? ++_i : --_i) {
           if (container_i === 0) {
             colspan = weighted_colspans[Math.floor(Math.random() * weighted_colspans.length)];
+            console.log(colspan)
             height = colspan * 80 + ((colspan - 1) * 12);
           } else {
             height = Math.random() * 100 + 100;
