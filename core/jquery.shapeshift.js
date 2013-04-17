@@ -519,10 +519,10 @@
             }
             if (target_position === parsed_children.length) {
               $target = parsed_children[target_position - 1].el;
-              //$selected.insertAfter($target);
+              $selected.insertAfter($target);
             } else {
               $target = parsed_children[target_position].el;
-              //$selected.insertBefore($target);
+              $selected.insertBefore($target);
             }
           } else {
             if (total_positions === 1) {
