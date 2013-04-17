@@ -528,12 +528,12 @@
             if (total_positions === 1) {
               attributes = child_positions[0];
               if (attributes.left < selected_x) {
-                //this.$container.append($selected);
+                this.$container.append($selected);
               } else {
-                //this.$container.prepend($selected);
+                this.$container.prepend($selected);
               }
             } else {
-              //this.$container.append($selected);
+              this.$container.append($selected);
             }
           }
           this.arrange(true);
